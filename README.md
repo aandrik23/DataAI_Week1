@@ -36,7 +36,7 @@ FROM sales
 GROUP BY product_name
 ORDER BY total_quantity DESC;
 ```
-To find the of pieces of each product.
+To find the number of pieces of each product.
 
 ```
 SELECT product_name, SUM(total_price) AS total_revenue
@@ -44,7 +44,7 @@ FROM sales
 GROUP BY product_name
 ORDER BY total_revenue DESC;
 ```
-The total per product.
+The total revenue from each product.
 
 ```
 SELECT transaction_date, COUNT(*) AS num_sales, SUM(total_price) AS daily_revenue
@@ -53,4 +53,5 @@ GROUP BY transaction_date
 ORDER BY transaction_date;
 ```
 The number of sales per day.
+
 
