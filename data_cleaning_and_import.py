@@ -62,6 +62,8 @@ def parse_date(x):
 
 df_clean['transaction_date'] = df_clean['transaction_date'].apply(parse_date)
 df_clean.dropna(subset=['transaction_date'], inplace=True)
+df_clean['transaction_date'] = pd.to_datetime(df_clean['transaction_date'], errors='coerce')
+df_clean = df_clean[df_clean['transaction_date'].dt.year == 2025]
 
 # Drop duplicates
 df_clean.drop_duplicates(inplace=True)
@@ -72,6 +74,8 @@ df_clean = df_clean[df_clean['total_price'] < 100000]
 
 # Count cleaned rows
 rows_after = len(df_clean)
+
+
 
 # Save cleaned data to CSV
 df_clean.to_csv("cleaned_sales.csv", index=False)
